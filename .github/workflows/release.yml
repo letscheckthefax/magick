@@ -92,7 +92,7 @@ jobs:
         find /appdir -executable -type f -exec ldd {} \; | grep " => /usr" | cut -d " " -f 2-3 | sort | uniq
 
     - name: Upload ImageMagick AppImage
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       with:
         name: AppImage-${{ matrix.compiler }}
         path: artifacts
@@ -152,7 +152,7 @@ jobs:
         cd ImageMagick-Windows
         msbuild /m /t:Rebuild /p:Configuration=Release,Platform=${{matrix.platform}}
 
-    - uses: actions/upload-artifact@v4
+    - uses: actions/upload-artifact@v5
       with:
         name: Windows-${{matrix.quantum}}${{matrix.hdri_flag}}-${{matrix.platform}}
         path: |
@@ -240,7 +240,7 @@ jobs:
         aip-commands: |
             SetVersion ${{ needs.version.outputs.version }}
 
-    - uses: actions/upload-artifact@v4
+    - uses: actions/upload-artifact@v5
       if: github.event_name != 'pull_request'
       with:
         name: Msix-${{matrix.quantum}}${{matrix.hdri_flag}}

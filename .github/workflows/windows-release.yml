@@ -37,7 +37,7 @@ jobs:
         mv ChangeLog.md artifacts/ChangeLog.md
 
     - name: Upload ChangeLog.md
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       with:
         name: ChangeLog
         path: artifacts
@@ -195,7 +195,7 @@ jobs:
         $version = $version -Replace " ","-"
         echo "version=$version" >> $env:GITHUB_OUTPUT
 
-    - uses: actions/upload-artifact@v4
+    - uses: actions/upload-artifact@v5
       with:
         name: 'ImageMagick-${{steps.version.outputs.version}}-installer-${{matrix.quantum}}${{matrix.hdri_flag}}-${{matrix.type}}-${{matrix.platform}}'
         path: 'ImageMagick-Windows\Installer\Inno\Artifacts'
@@ -245,7 +245,7 @@ jobs:
         move Projects Source
         7z a ImageMagick-Windows.7z .\Source\*
 
-    - uses: actions/upload-artifact@v4
+    - uses: actions/upload-artifact@v5
       with:
         name: ImageMagick-Windows
         path: 'ImageMagick-Windows\ImageMagick-Windows.7z'
@@ -363,7 +363,7 @@ jobs:
         $version = $version -Replace " ","-"
         echo "version=$version" >> $env:GITHUB_OUTPUT
 
-    - uses: actions/upload-artifact@v4
+    - uses: actions/upload-artifact@v5
       with:
         name: 'ImageMagick-${{steps.package.outputs.version}}-portable-${{matrix.quantum}}${{matrix.hdri_flag}}-${{matrix.platform}}'
         path: portable
